@@ -15,4 +15,8 @@ class products extends Model
     public function images(){
         return $this->hasMany(images::class);
     }
+
+    public function product_types(){
+        return $this->belongsTo(product_types::class);
+    }
 }

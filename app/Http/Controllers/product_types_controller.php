@@ -7,9 +7,6 @@ use Illuminate\Http\Request;
 
 class product_types_controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         //lấy tất cả dữ liệu
@@ -17,18 +14,10 @@ class product_types_controller extends Controller
         // đưa sang view
         return view('product_type_list', compact('lstPT'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('product_type_create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $rq)
     {
         //
@@ -38,36 +27,25 @@ class product_types_controller extends Controller
 
         return redirect()->route('product_type')->with('msg','Thêm thành công');
     }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
+        $p = product_types::find($id);
+        return view('product_type_edit',compact('p'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Request $rq,$id)
     {
         //
+        $p = product_types::find($id);
+        $p->name=$rq->name;
+        $p->save();
+        return redirect()->route('product_type')->with('msg','Cập nhật thành công');
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function destroy($id)
     {
         //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $p = product_types::find($id);
+        $p->delete();
+        return redirect()->route('product_type')->with('msg','Xóa thành công');
     }
 }

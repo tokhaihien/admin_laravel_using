@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\images;
+use App\Models\product_types;
 use App\Models\products;
 use Illuminate\Http\Request;
+
+use function Laravel\Prompts\alert;
 
 class products_controller extends Controller
 {
@@ -13,9 +17,10 @@ class products_controller extends Controller
     public function index()
     {
         //lay tat ca danh sach
-        $lstP = products::with('images')->get();
+        $lstPT = product_types::all();
+        $lstP = products::with('images')->with('product_types')->get();
 
-        return view('product_list',compact('lstP'));
+        return view('product_list',compact('lstP','lstPT'));
     }
 
     /**
@@ -29,9 +34,21 @@ class products_controller extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $rq)
     {
         //
+        $p = new products();
+        $p->name = $rq->name;
+        $p->product_types_id=$rq->product_type;
+        $p->save();
+
+        $id = products::max('id');
+
+        $img = new images();
+        $img->products_id = $id;
+        $img->url = 'images/products/noimg.png';
+        $img->save();
+        return redirect()->route('product')->with('msg','Thêm thành công');
     }
 
     /**

@@ -3,17 +3,18 @@
 
     <head>
         <meta charset="utf-8">
-        <title>Dashboard | Simple - Responsive Bootstrap 4 Admin Dashboard</title>
+        <title>ADMIN</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Responsive bootstrap 4 admin template" name="description">
         <meta content="Coderthemes" name="author">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assets\images\favicon.ico">
+        <link rel="shortcut icon" href="{{asset('assets\images\favicon.ico')}}">
         <!-- App css -->
-        <link href="assets\css\bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
-        <link href="assets\css\icons.min.css" rel="stylesheet" type="text/css">
-        <link href="assets\css\app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet">
+        <link href="{{asset('assets\css\bootstrap.min.css')}}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
+        <link href="{{asset('assets\css\icons.min.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('assets\css\app.min.css')}}" rel="stylesheet" type="text/css" id="app-stylesheet">
+        
 
     </head>
 
@@ -164,7 +165,7 @@
 
                 <div class="user-box">
                         <div class="float-left">
-                            <img src="assets\images\users\avatar-1.jpg" alt="" class="avatar-md rounded-circle">
+                            <img src="{{asset('assets\images\users\avatar-1.jpg')}}" alt="" class="avatar-md rounded-circle">
                         </div>
                         <div class="user-info">
                             <a href="#">Admin Name</a>
@@ -180,7 +181,7 @@
                     <li class="menu-title">Chức năng</li>
     
                     <li>
-                        <a href="index.html">
+                        <a href="/">
                             <i class="ti-home"></i>
                             <span> ADMIN </span>
                         </a>
@@ -292,15 +293,16 @@
        
 
         <!-- Vendor js -->
-        <script src="assets\js\vendor.min.js"></script>
+        <script src="{{asset('assets\js\vendor.min.js')}}"></script>
 
-        <script src="assets\libs\morris-js\morris.min.js"></script>
-        <script src="assets\libs\raphael\raphael.min.js"></script>
+        <script src="{{asset('assets\libs\morris-js\morris.min.js')}}"></script>
+        <script src="{{asset('assets\libs\raphael\raphael.min.js')}}"></script>
 
-        <script src="assets\js\pages\dashboard.init.js"></script>
+        <script src="{{asset('assets\js\pages\dashboard.init.js')}}"></script>
 
         <!-- App js -->
-        <script src="assets\js\app.min.js"></script>
+        <script src="{{asset('assets\js\app.min.js')}}"></script>
+
 
     </body>
 
