@@ -22,8 +22,6 @@ Route::get('/', function () {
 // product_types
 // index
 Route::get('/product_type',[product_types_controller::class,'index'])->name('product_type');
-// create
-// Route::get('/product_type_create',[product_types_controller::class,'create'])->name('product_type_create');
 // store
 Route::post('/product_type_store',[product_types_controller::class,'store'])->name('product_type_store');
 // edit
@@ -35,4 +33,10 @@ Route::get('/product_type/{id?}/del',[product_types_controller::class,'destroy']
 // products
 // index
 Route::get('/product',[products_controller::class,'index'])->name('product');
+// store
 Route::post('/product_store',[products_controller::class,'store'])->name('product_store');
+// del
+Route::get('/product/{id?}/del',[products_controller::class,'destroy'])->name('product_del');
+// edit
+Route::get('/product/{id?}/edit',[products_controller::class,'show'])->name('product_show');
+Route::post('/product/{id?}/edit',[products_controller::class,'edit'])->name('product_edit');
