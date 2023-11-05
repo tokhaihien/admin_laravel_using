@@ -193,6 +193,20 @@
                             <span> Khách hàng </span>
                         </a>
                     </li>
+
+                    <li>
+                        <a href="{{route('i_product')}}">
+                            <i class="ti-home"></i>
+                            <span> Nhập hàng </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html">
+                            <i class="ti-home"></i>
+                            <span> Xuất hàng </span>
+                        </a>
+                    </li>
     
                     <li>
                         <a href="javascript: void(0);">

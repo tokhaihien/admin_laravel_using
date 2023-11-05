@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\i_detail_invoices_controller;
 use App\Http\Controllers\product_types_controller;
 use App\Http\Controllers\products_controller;
 use Illuminate\Support\Facades\Route;
@@ -40,3 +41,8 @@ Route::get('/product/{id?}/del',[products_controller::class,'destroy'])->name('p
 // edit
 Route::get('/product/{id?}/edit',[products_controller::class,'show'])->name('product_show');
 Route::post('/product/{id?}/edit',[products_controller::class,'edit'])->name('product_edit');
+
+// i_product
+// index
+Route::get('/i_product', [i_detail_invoices_controller::class, 'index'])->name('i_product');
+Route::post('/i_product', [i_detail_invoices_controller::class, 'store'])->name('do_i_product');
