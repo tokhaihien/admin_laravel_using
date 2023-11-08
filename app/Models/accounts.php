@@ -5,14 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class i_detail_invoices extends Model
+class accounts extends Authenticatable
 {
     use HasFactory;
-    protected $table = "i_detail_invoices";
+    protected $table = "accounts";
     use SoftDeletes;
-
-    public function products(){
-        return $this->belongsTo(products::class);
-    }
 }

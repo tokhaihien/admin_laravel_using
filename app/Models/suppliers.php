@@ -11,4 +11,8 @@ class suppliers extends Model
     use HasFactory;
     protected $table = "suppliers";
     use SoftDeletes;
+
+    public function i_invoices(){
+        return $this->hasMany(i_invoices::class);
+    }
 }

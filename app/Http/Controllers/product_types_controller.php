@@ -25,7 +25,7 @@ class product_types_controller extends Controller
         $p->name = $rq->name;
         $p->save();
 
-        return redirect()->route('product_type')->with('msg','Thêm thành công');
+        return redirect()->route('product_type')->with('msg-c','Thêm thành công');
     }
     public function show(string $id)
     {

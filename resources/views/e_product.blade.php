@@ -8,11 +8,11 @@
         </div>
         @endif
         <div class="mb-9 mt-3">
-            <label for="nha_cung_cap" class="form-label m-0">Nhà cung cấp</label>
-            <select class="form-control" name="nha_cung_cap" id="ncc" onchange="changeID(this);">
-                <option value="1">Chọn nhà cung cấp</option>
-                @foreach($lst_sup as $sup)
-                <option value="{{$sup->id}}">{{$sup->name}}</option>
+            <label for="khac_hhang" class="form-label m-0">Khách hàng</label>
+            <select class="form-control" name="khach_hang" id="id_khachhang" onchange="changeID(this);">
+                <option value="1">Chọn khách hàng</option>
+                @foreach($guest as $g)
+                <option value="{{$g->id}}">{{$g->fullname}}</option>
                 @endforeach
             </select>
         </div>
@@ -21,9 +21,9 @@
 
                 <div class="mb-9">
                     <label for="name_product" class="form-label m-0">Tên sản phẩm</label>
-                    <select class="form-control" name="name_product" id="product_name">
+                    <select class="form-control" name="name_product" id="product_name" onchange="changePrice();">
                         @foreach($lst_pro as $pro)
-                        <option value="{{$pro->id}}">{{$pro->name}}</option>
+                        <option value="{{$pro->id}}" data-price="{{$pro->price}}">{{$pro->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -34,16 +34,11 @@
                 </div>
 
                 <div class="mb-9">
-                    <label for="price_nhap" class="form-label m-0 mt-2">Giá nhập</label>
-                    <input type="text" class="form-control" name="price_nhap" id="price_nhap" placeholder="Nhập tên sản phẩm">
-                </div>
-
-                <div class="mb-9">
                     <label for="price-ban" class="form-label m-0 mt-2">Giá bán</label>
                     <input type="text" class="form-control" name="price_ban" id="price_ban" placeholder="Nhập tên sản phẩm">
                 </div>
                 <br>
-                <button type="button" id="updateButton" class="btn btn-warning" onclick="productUpdate();">Thêm vào đơn đặt hàng</button>
+                <button type="button" id="updateButton" class="btn btn-warning" onclick="productUpdate();">Thêm vào đơn bán hàng</button>
 
 
 
@@ -59,7 +54,6 @@
                                     <th scope="col">STT</th>
                                     <th scope="col">Sản phẩm</th>
                                     <th scope="col">Số lượng</th>
-                                    <th scope="col">Giá nhập</th>
                                     <th scope="col">Giá bán</th>
                                     <th scope="col">Thành tiền</th>
                                     <th scope="col">Tùy chỉnh</th>
@@ -113,7 +107,6 @@
                 <td>${stt}</td>
                 <td>${$("#product_name").find(':selected').text()}<input type="hidden" name='sp_id[]' value='${$("#product_name").find(':selected').val()}'/></td>
                 <td>${$("#quantity").val()}<input type="hidden" name='quantity[]' value='${$("#quantity").val()}'/></td>
-                <td>${$("#price_nhap").val()}  VND<input type="hidden" name='price_nhap[]' value='${$("#price_nhap").val()}'/></td>
                 <td>${$("#price_ban").val()}  VND<input type="hidden" name='price_ban[]' value='${$("#price_ban").val()}'/></td>
                 <td>${$("#quantity").val() * $("#price_nhap").val()}  VND<input type="hidden" name='thanh_tien[]' value='${$("#quantity").val() * $("#price_nhap").val()}'/></td>
                 <td><button type='submit' class='btn btn-success'>Sửa</button> | <button type='button' class='btn btn-danger' onclick='productDelete(this)'>Xóa</button></td>
@@ -139,5 +132,10 @@
     function changeID(obj) {
         $("#id_ncc").val(obj.value);
     }
+
+    function changePrice(){
+        var $selected = $('#product_name').children(":selected");
+        $("#price_ban").val($selected.data('price'));
+    };
 </script>
 @endsection

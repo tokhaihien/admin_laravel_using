@@ -7,6 +7,7 @@ use App\Models\i_invoices;
 use App\Models\products;
 use App\Models\suppliers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class i_detail_invoices_controller extends Controller
 {
@@ -35,11 +36,11 @@ class i_detail_invoices_controller extends Controller
      */
     public function store(Request $rq)
     {
+        // dd($rq);
         //tao hoa don
         $i_e = new i_invoices();
         $i_e->suppliers_id = $rq->id_ncc;
-        $i_e->i_person = "To Khai Hien";
-        $i_e->i_phone = "0866508347";
+        $i_e->i_person = Auth::user()->fullname;
         $i_e->save();
 
         // Them chi tiet hoa don
@@ -65,15 +66,17 @@ class i_detail_invoices_controller extends Controller
         $i_e->total = $tongTien;
         $i_e->save();
 
-        return "Them hoa don thanh cong ID = {{$i_e->id}}";
+        return redirect()->route('i_product')->with('msg', 'Nhập hàng thành công');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         //
+        $cthd = i_detail_invoices::where('i_invoices_id', $id)->with('products')->get();
+        return view('i_detail_invoice', compact('cthd'));
     }
 
     /**

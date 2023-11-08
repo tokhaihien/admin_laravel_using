@@ -10,9 +10,9 @@
             </div>
         </div>
 
-        @if(session('msg'))
+        @if(session('msg-c'))
         <div class="alert alert-success mb-3" role="alert">
-            {{session('msg')}}
+            {{session('msg-c')}}
         </div>
         @endif
 
@@ -35,7 +35,7 @@
                         <table class="table mb-0">
                             <thead>
                                 <tr>
-                                    <th scope="col">Mã loại</th>
+                                    
                                     <th scope="col">Tên loại</th>
                                     <th scope="col">Trạng thái</th>
                                     <th scope="col">Tùy chỉnh</th>
@@ -44,7 +44,7 @@
                             <tbody>
                                 @foreach($lstPT as $pt)
                                 <tr>
-                                    <th scope="row">{{$pt->id}}</th>
+                                    
                                     <td id="name">{{$pt->name}}</td>
                                     <td>{{$pt->delete_at != 'NULL'? 'Hoạt động': 'Không hoạt động'}}</td>
                                     <td>

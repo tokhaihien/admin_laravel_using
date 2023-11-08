@@ -11,4 +11,8 @@ class i_invoices extends Model
     use HasFactory;
     protected $table = "i_invoices";
     use SoftDeletes;
+
+    public function suppliers(){
+        return $this->belongsTo(suppliers::class);
+    }
 }
