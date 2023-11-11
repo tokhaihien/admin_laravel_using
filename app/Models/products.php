@@ -11,6 +11,7 @@ class products extends Model
     use HasFactory;
     protected $table = "products";
     use SoftDeletes;
+    protected $hidden = ['deleted_at','created_at','updated_at'];
 
     public function images(){
         return $this->hasMany(images::class);

@@ -62,6 +62,7 @@ Route::middleware('auth')->group(function(){
     // e_product - xuat hang
     // index
     Route::get('/e_product', [e_detail_invoices_controller::class, 'index'])->name('e_product');
+    Route::post('/e_product', [e_detail_invoices_controller::class, 'store'])->name('do_e_product');
 });
 
 Route::middleware('guest')->group(function () {

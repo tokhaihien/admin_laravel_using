@@ -35,7 +35,7 @@
 
                 <div class="mb-9">
                     <label for="price-ban" class="form-label m-0 mt-2">Giá bán</label>
-                    <input type="text" class="form-control" name="price_ban" id="price_ban" placeholder="Nhập tên sản phẩm">
+                    <input type="text" class="form-control" name="price_ban" id="price_ban" placeholder="Giá sản phẩm" readonly >
                 </div>
                 <br>
                 <button type="button" id="updateButton" class="btn btn-warning" onclick="productUpdate();">Thêm vào đơn bán hàng</button>
@@ -43,7 +43,7 @@
 
 
             </div>
-            <form action="{{route('do_i_product')}}" method="post" class="col-lg-9">
+            <form action="{{route('do_e_product')}}" method="post" class="col-lg-9">
                 @csrf
                 <!-- Table danh sách -->
                 <div class="mt-2">
@@ -108,7 +108,7 @@
                 <td>${$("#product_name").find(':selected').text()}<input type="hidden" name='sp_id[]' value='${$("#product_name").find(':selected').val()}'/></td>
                 <td>${$("#quantity").val()}<input type="hidden" name='quantity[]' value='${$("#quantity").val()}'/></td>
                 <td>${$("#price_ban").val()}  VND<input type="hidden" name='price_ban[]' value='${$("#price_ban").val()}'/></td>
-                <td>${$("#quantity").val() * $("#price_nhap").val()}  VND<input type="hidden" name='thanh_tien[]' value='${$("#quantity").val() * $("#price_nhap").val()}'/></td>
+                <td>${$("#quantity").val() * $("#price_nhap").val()}  VND<input type="hidden" name='thanh_tien[]' value='${$("#quantity").val() * $("#price_ban").val()}'/></td>
                 <td><button type='submit' class='btn btn-success'>Sửa</button> | <button type='button' class='btn btn-danger' onclick='productDelete(this)'>Xóa</button></td>
                 </tr>
             `;

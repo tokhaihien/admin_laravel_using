@@ -2,22 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\product_types;
+use App\Models\accounts;
 use Illuminate\Http\Request;
 
-class api_product_types_controller extends Controller
+class api_account_controller extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         //
-        $lst_pt = product_types::with('products')->get();
-        return response()->json([
-            'success' => true,
-            'data' => $lst_pt
-        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -32,6 +36,14 @@ class api_product_types_controller extends Controller
      * Display the specified resource.
      */
     public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
     {
         //
     }
